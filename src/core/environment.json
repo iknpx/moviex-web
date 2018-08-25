@@ -1,0 +1,6 @@
+{
+    "DEBUG": true,
+    "API": {
+        "HOST": "http://localhost:5000"
+    }
+}

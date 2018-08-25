@@ -1,0 +1,11 @@
+{
+    "presets": ["env", "stage-0", "react"],
+    "plugins": ["transform-decorators-legacy", "react-hot-loader/babel"],
+    "env": {
+        "test": {
+            "plugins": [
+                [ "babel-plugin-webpack-alias", { "config": "./webpack/index.js" } ]
+            ]
+        }
+    }
+}

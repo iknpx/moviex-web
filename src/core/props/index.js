@@ -1,0 +1,1 @@
+export DisptachProps from './dispatch';
