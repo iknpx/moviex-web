@@ -1,0 +1,47 @@
+@import '../../mixins/placeholder'
+
+.container
+	align-items center
+	background-color #333
+	box-shadow 0 2px 7px 0 rgba(0, 0, 0, .17)
+	display flex
+	height 70px
+	justify-content center
+
+.content
+	justify-content space-between
+
+.name
+	color #EEE
+	font-size 24px
+	line-height 26px
+
+.search
+	display flex
+	height 31px
+	width 400px
+
+.button
+	background-color #EFEFEF
+	border 0
+	border-bottom-right-radius 15px
+	border-top-right-radius 15px
+	width 100px
+
+	&:active
+		outline 0
+
+	&:disabled
+		background-color #555
+
+.input
+	placeholder(#AAA)
+
+	background-color #555
+	border 0
+	border-bottom-left-radius 15px
+	border-top-left-radius 15px
+	color #FFF
+	flex-grow 1
+	outline 0
+	padding 0 16px

@@ -9,7 +9,7 @@ import { render } from 'react-dom';
 
 import { Layout } from '@core/components';
 
-import { MoviesList } from './routes';
+import { List, Movie } from './routes';
 import { store, history } from './store';
 
 @hot(module)
@@ -18,7 +18,8 @@ export class App extends Component {
         return (
             <Layout>
                 <Switch>
-                    <Route exact path="/" component={MoviesList} />
+                    <Route exact path="/" component={List} />
+                    <Route path="/:id" component={Movie} />
                     <Redirect to="/" />
                 </Switch>
             </Layout>

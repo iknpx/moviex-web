@@ -8,7 +8,7 @@
 * [Webpack](https://webpack.js.org)
 * [Stylus](http://stylus-lang.com/) / [Rupture](http://jescalan.github.io/rupture)
 * [ESLint](https://eslint.org)
-* [Drone CI](https://drone.io/)
+* [Drone CI](https://drone.io)
 
 ### Quick start
 * Clone this repo using `git clone git@github.com:iknpx/moviex-app.git`

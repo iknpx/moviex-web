@@ -13,5 +13,6 @@ export default createReducer({
 }, {
     isError: true,
     isFetching: false,
+    searchString: '',
     data: [],
 });

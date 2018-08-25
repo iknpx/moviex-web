@@ -4,9 +4,9 @@ import style from './style.styl';
 
 export default class Container extends Component {
     render() {
-        const { children } = this.props;
+        const { className, children } = this.props;
 
-        return <div className={style.container}>
+        return <div className={`${style.container} ${className}`}>
             {children}
         </div>;
     }
