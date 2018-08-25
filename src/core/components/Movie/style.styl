@@ -1,2 +1,75 @@
+@import '../../mixins/animate'
+
+@keyframes animate
+	from
+		transform translate3d(0, 100%, 0)
+		opacity 0
+
+	to
+		opacity 1
+		transform none
+
 .container
+	fadeIn(.2s)
+	width 230px
+	height 340px
 	display flex
+
+.item
+	display flex
+	width 200px
+	height 300px
+	background-position center
+	background-repeat no-repeat
+	background-size cover
+	cursor pointer
+	position relative
+	top 20px
+	left 15px
+	transition all .2s ease
+	flex-direction column
+	justify-content flex-end
+	border-radius 2px
+
+	&:hover
+		width 220px
+		height 330px
+		top 5px
+		left 6px
+
+		& > .description
+			display flex
+			animation-name animate
+			animation-duration .1s
+			animation-fill-mode both
+			animation-delay .2s
+
+.description
+	align-items flex-start
+	background-color rgba(255, 255, 255, .85)
+	border-radius 2px
+	display none
+	flex-direction column
+	height 100%
+	padding 15px
+	text-align left
+
+.title
+	color #333
+	margin-bottom 10px
+
+.tagline
+	color #666
+	font-size .9em
+
+.genres
+	border-top 1px solid #aaa
+	display flex
+	flex-direction column
+	margin-top 10px
+	padding-top 10px
+	width 100%
+
+.genre
+	color #777
+	font-size .9em
