@@ -1,4 +1,6 @@
 *.log
+*-lock.json
+*.lock
 *.snap
 *sublime*
 
