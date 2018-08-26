@@ -13,7 +13,7 @@ const json = require('jsonfile');
 const environment = 'src/core/environment.json';
 
 const {
-    API_HOST,
+    WS_HOST,
     NODE_ENV,
 } = process.env;
 
@@ -31,8 +31,8 @@ gulp.task('deploy', function () {
 gulp.task('environment', done => {
     const data = json.readFileSync(environment);
 
-    if (API_HOST) {
-        data.API.HOST = API_HOST;
+    if (WS_HOST) {
+        data.WS.HOST = WS_HOST;
     }
 
     if (NODE_ENV && NODE_ENV === 'production') {

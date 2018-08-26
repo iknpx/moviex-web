@@ -38,8 +38,7 @@ pipeline:
   build:
     image: node:carbon
     environment:
-      - API_HOST=https://api
-      - SESSION_KEY=secret_key
+      - WS_HOST=https://moviexapi.herokuapp.com
     commands:
       - npm install -g gulp
       - gulp environment

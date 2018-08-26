@@ -22,7 +22,7 @@ export default class LoadMore extends Component {
 
         return <div className={`${style.container} ${ !count ? style.loading : ''}`}
             onClick={this.handleClick}>
-            <span className={style.title}>Load More</span>
+            <span className={style.title}>Show more</span>
             <span className={style.count}>
                 {count ? count : (
                     <svg width={20} height={20} viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff" className={style.svg}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import style from './style.styl';
 
@@ -12,8 +13,8 @@ export default class ButtonLink extends Component {
     render() {
         const { title, url } = this.props;
 
-        return <a target="__blank" href={url} className={style.container}>
+        return <Link to={url} className={style.container}>
             {title}
-        </a>;
+        </Link>;
     }
 }

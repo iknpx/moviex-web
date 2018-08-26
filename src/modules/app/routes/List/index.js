@@ -7,71 +7,60 @@ import { DisptachProps } from '@core/props';
 
 import style from './style.styl';
 
-@connect(({ movies }) => ({ movies }))
+import * as MovieService from '../../service';
+
+@connect(({ env, movies }) => ({ env, movies }))
 export default class MoviesList extends Component {
     static propTypes = {
         ...DisptachProps,
-        movies: PropTypes.object,
+        env: PropTypes.object,
+        movies: PropTypes.array,
     };
 
-    handleSearch = (searchString, done) => {
-        setTimeout(() => done(), 800);
+    handleSearch = searchString => {
+        const { dispatch } = this.props;
+
+        dispatch(
+            MovieService.emitSearch(searchString, 1),
+        );
     };
 
     handleLoadMore = () => {
+        const { dispatch, env: { moviesPage, searchString } } = this.props;
 
+        dispatch(
+            searchString
+                ? MovieService.emitSearch(searchString, moviesPage + 1)
+                : MovieService.emitPopularMovies(moviesPage + 1),
+        );
     };
 
     componentDidMount() {
-        const { movies: { isError, isFetching, searchString, data } } = this.props;
+        const { dispatch } = this.props;
+
+        dispatch(
+            MovieService.emitPopularMovies(),
+        );
     }
 
     render() {
-        const { movies: { isError, isFetching, searchString, data } } = this.props;
-
-        const movie = {
-            id: 299536,
-            back: 'https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg',
-            poster: 'https://image.tmdb.org/t/p/original/qJawKUQcIBha507UahUlX0keOT7.jpg',
-            title: 'Avengers: Infinity War',
-            tagline: 'An entire universe. Once and for all.',
-            release_date: '2018-04-25',
-            homepage: 'http://marvel.com/movies/movie/223/avengers_infinity_war_part_1',
-            genres: [{
-                id: 12,
-                title: 'Adventure',
-            },
-            {
-                id: 878,
-                title: 'Science Fiction',
-            },
-            {
-                id: 14,
-                title: 'Fantasy',
-            },
-            {
-                id: 28,
-                title: 'Action',
-            }],
-        };
+        const { movies, env: { searchString, isMoviesFetching, isSearching, moviesResultsCount } } = this.props;
 
         return <div className={style.container}>
-            { isFetching ? <Loading /> : null }
-            <Header onSearch={this.handleSearch} value={searchString} />
-            <TopMovie movie={movie} />
-            <Container className={style.movies}>
-                <div className={style.content}>
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                    <Movie movie={movie} />
-                </div>
-                <LoadMore onLoad={this.handleLoadMore} count={0} />
-            </Container>
+            { isMoviesFetching && !movies.length ? <Loading /> : (
+                <React.Fragment>
+                    <Header onSearch={this.handleSearch} value={searchString} isSearching={isSearching} />
+                    {movies.length && <TopMovie movie={movies[0]} />}
+                    <Container className={style.movies}>
+                        <div className={style.content}>
+                            {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+                        </div>
+                        {moviesResultsCount - movies.length > 0 && <LoadMore
+                            onLoad={this.handleLoadMore}
+                            count={isMoviesFetching ? 0 : moviesResultsCount - movies.length} />}
+                    </Container>
+                </React.Fragment>
+            ) }
         </div>;
     }
 }

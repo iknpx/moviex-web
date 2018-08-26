@@ -10,12 +10,13 @@
 		transform none
 
 .container
-	fadeIn(.2s)
 	width 230px
 	height 340px
 	display flex
 
 .item
+	fadeIn(.9s)
+
 	display flex
 	width 200px
 	height 300px
@@ -30,6 +31,7 @@
 	flex-direction column
 	justify-content flex-end
 	border-radius 2px
+	box-shadow 0 2px 7px 0 rgba(0, 0, 0, .17)
 
 	&:hover
 		width 220px
@@ -47,10 +49,11 @@
 .description
 	align-items flex-start
 	background-color rgba(255, 255, 255, .85)
-	border-radius 2px
+	border-bottom-right-radius 2px
+	border-bottom-left-radius 2px
 	display none
 	flex-direction column
-	height 100%
+	height 70%
 	padding 15px
 	text-align left
 

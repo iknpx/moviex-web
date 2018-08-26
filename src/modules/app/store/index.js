@@ -11,5 +11,3 @@ export const store = createStore(combineReducers({
     ...reducers,
     router: routerReducer,
 }), composeEnhancers(applyMiddleware(thunk, routerMiddleware(history))));
-
-export * from './actions';

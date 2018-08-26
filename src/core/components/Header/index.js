@@ -7,16 +7,17 @@ import style from './style.styl';
 
 export default class Header extends Component {
     static propTypes = {
+        isSearching: PropTypes.bool.isRequired,
         onSearch: PropTypes.func.isRequired,
         value: PropTypes.string,
     };
 
     static defaultProps = {
+        isSearching: false,
         value: '',
     };
 
     state = {
-        isSearching: false,
         searchString: '',
     };
 
@@ -31,8 +32,7 @@ export default class Header extends Component {
         const { onSearch } = this.props;
         const { searchString } = this.state;
 
-        this.setState({ isSearching: true });
-        onSearch(searchString, () => this.setState({ isSearching: false, searchString: '' }));
+        onSearch(searchString);
     };
 
     componentDidMount() {
@@ -42,7 +42,8 @@ export default class Header extends Component {
     }
 
     render() {
-        const { isSearching, searchString } = this.state;
+        const { searchString } = this.state;
+        const { isSearching } = this.props;
 
         return <div className={style.container}>
             <Container className={style.content}>
@@ -55,7 +56,23 @@ export default class Header extends Component {
                         onChange={this.handleInputChange}
                         disabled={isSearching} />
                     <button className={style.button} disabled={isSearching}>
-                        {isSearching ? '...' : 'Search'}
+                        {isSearching ? (
+                            <svg width={20} height={20} viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff" className={style.svg}>
+                                <g fill="none" fillRule="evenodd">
+                                    <g transform="translate(1 1)" strokeWidth="2">
+                                        <circle strokeOpacity=".4" cx="18" cy="18" r="18"/>
+                                        <path d="M36 18c0-9.94-8.06-18-18-18">
+                                            <animateTransform
+                                                attributeName="transform"
+                                                type="rotate"
+                                                from="0 18 18"
+                                                to="360 18 18"
+                                                dur={`${1}s`}
+                                                repeatCount="indefinite"/>
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>) : 'Search'}
                     </button>
                 </form>
             </Container>
