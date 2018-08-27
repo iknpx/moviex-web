@@ -11,7 +11,7 @@ import {
 
 const initialState = {
     adult: false,
-    backdrop_path: 'http://placehold.jp/640x480.png',
+    backdrop_path: 'https://placehold.jp/640x480.png',
     genres: [],
     homepage: 'http://',
     id: 0,
@@ -22,7 +22,7 @@ const initialState = {
     overview: '',
     page: 0,
     popularity: 0,
-    poster_path: 'http://placehold.jp/480x640.png',
+    poster_path: 'https://placehold.jp/480x640.png',
     recommendations: [],
     release_date: '2000-01-01',
     tagline: '',
