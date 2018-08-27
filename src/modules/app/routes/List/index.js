@@ -13,8 +13,8 @@ import {
     TopMovie,
 } from '@core/components';
 import { DisptachProps } from '@core/props';
-
 import { emmiters } from '@app/services';
+
 import style from './style.styl';
 
 @connect(({ env, movies }) => ({ env, movies }))

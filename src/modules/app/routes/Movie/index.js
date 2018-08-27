@@ -6,14 +6,13 @@ import { withRouter } from 'react-router-dom';
 
 import {
     Container,
-    MovieDetails,
     Loading,
     LoadingMore,
     Movie,
+    MovieDetails,
     NoMoviesFound,
 } from '@core/components';
 import { DisptachProps, RouterProps } from '@core/props';
-
 import { emmiters } from '@app/services';
 import { resetMovieAction } from '@app/store/actions';
 

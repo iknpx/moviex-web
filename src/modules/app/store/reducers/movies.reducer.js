@@ -1,14 +1,14 @@
 import { createReducer } from 'redux-act';
 
 import {
-    onFetchMoviesStartAction,
-    onFetchMoviesSuccessAction,
     onFetchMoreMoviesStartAction,
     onFetchMoreMoviesSuccessAction,
-    onSearchMoviesStartAction,
-    onSearchMoviesSuccessAction,
+    onFetchMoviesStartAction,
+    onFetchMoviesSuccessAction,
     onSearchMoreMoviesStartAction,
     onSearchMoreMoviesSuccessAction,
+    onSearchMoviesStartAction,
+    onSearchMoviesSuccessAction,
     setSearchQueryAction,
 } from '@app/store/actions';
 

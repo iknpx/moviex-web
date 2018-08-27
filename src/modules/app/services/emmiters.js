@@ -1,13 +1,12 @@
 import {
+    onFetchMoreMovieRecommendationsStartAction,
     onFetchMoreMoviesStartAction,
+    onFetchMovieDetailsStartAction,
+    onFetchMovieRecommendationsStartAction,
     onFetchMoviesStartAction,
     onSearchMoreMoviesStartAction,
     onSearchMoviesStartAction,
     setSearchQueryAction,
-
-    onFetchMovieDetailsStartAction,
-    onFetchMovieRecommendationsStartAction,
-    onFetchMoreMovieRecommendationsStartAction,
 } from '@app/store/actions';
 
 import { socket } from './handlers';

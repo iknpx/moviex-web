@@ -1,4 +1,4 @@
-export BackButton from './BackButton';
+export ButtonBack from './ButtonBack';
 export ButtonLink from './ButtonLink';
 export ConnectionError from './ConnectionError';
 export Container from './Container';
@@ -9,5 +9,4 @@ export LoadingMore from './LoadingMore';
 export Movie from './Movie';
 export MovieDetails from './MovieDetails';
 export NoMoviesFound from './NoMoviesFound';
-export Switch from './Switch';
 export TopMovie from './TopMovie';

@@ -2,55 +2,54 @@
 
 @keyframes animate
 	from
-		transform translate3d(0, 100%, 0)
 		opacity 0
+		transform translate3d(0, 100%, 0)
 
 	to
 		opacity 1
 		transform none
 
 .container
-	width 230px
-	height 340px
 	display flex
+	height 340px
+	width 230px
 
 .item
 	fadeIn(.9s)
-
-	display flex
-	width 200px
-	height 300px
 	background-position center
 	background-repeat no-repeat
 	background-size cover
-	cursor pointer
-	position relative
-	top 20px
-	left 15px
-	transition all .2s ease
-	flex-direction column
-	justify-content flex-end
 	border-radius 2px
 	box-shadow 0 2px 7px 0 rgba(0, 0, 0, .17)
+	cursor pointer
+	display flex
+	flex-direction column
+	height 300px
+	justify-content flex-end
+	left 15px
+	position relative
+	top 20px
+	transition all .2s ease
+	width 200px
 
 	&:hover
-		width 220px
 		height 330px
-		top 5px
 		left 6px
+		top 5px
+		width 220px
 
 		& > .description
-			display flex
-			animation-name animate
+			animation-delay .2s
 			animation-duration .1s
 			animation-fill-mode both
-			animation-delay .2s
+			animation-name animate
+			display flex
 
 .description
 	align-items flex-start
-	background-color rgba(255, 255, 255, .85)
-	border-bottom-right-radius 2px
+	background-color rgba(255, 255, 255, .9)
 	border-bottom-left-radius 2px
+	border-bottom-right-radius 2px
 	display none
 	flex-direction column
 	height 70%

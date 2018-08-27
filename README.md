@@ -1,7 +1,7 @@
 # Moviex
-![Build Status]()
+![Build Status](https://drone.dayler.io/api/badges/iknpx/moviex-app/status.svg)
 
-[Example]()
+[Example](https://moviex.dayler.io)
 
 ### Stack
 * [React](https://reactjs.org) / [Redux](https://redux.js.org)
@@ -15,3 +15,6 @@
 * Move to the appropriate directory: cd `moviex-app`
 * Run `yarn` or `npm install` to install dependencies
 * Run `npm start` to see the example app at http://localhost:8000
+
+### Api
+* Make sure your API is up from [iknpx/moviex-api](https://github.com/iknpx/moviex-api)

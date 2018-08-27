@@ -57,7 +57,7 @@ export default class Header extends Component {
                         disabled={isSearching} />
                     <button className={style.button} disabled={isSearching}>
                         {isSearching ? (
-                            <svg width={20} height={20} viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff" className={style.svg}>
+                            <svg width={20} height={20} viewBox="0 0 38 38" stroke="#fff" className={style.svg}>
                                 <g fill="none" fillRule="evenodd">
                                     <g transform="translate(1 1)" strokeWidth="2">
                                         <circle strokeOpacity=".4" cx="18" cy="18" r="18"/>

@@ -25,7 +25,7 @@ export default class TopMovie extends Component {
                 <ButtonLink url={`/${id}`} title="DETAILS" />
                 <div className={style.footer}>
                     <span className={style.date}>
-                        {moment(release_date).format('DD of MMMM, YYYY')}
+                        {moment(release_date).format('DD of MMMM, YY')}
                     </span>
                 </div>
             </div>

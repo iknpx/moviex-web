@@ -1,12 +1,12 @@
 import { createReducer } from 'redux-act';
 import {
-    resetMovieAction,
+    onFetchMoreMovieRecommendationsStartAction,
+    onFetchMoreMovieRecommendationsSuccessAction,
     onFetchMovieDetailsStartAction,
     onFetchMovieDetailsSuccessAction,
     onFetchMovieRecommendationsStartAction,
     onFetchMovieRecommendationsSuccessAction,
-    onFetchMoreMovieRecommendationsStartAction,
-    onFetchMoreMovieRecommendationsSuccessAction,
+    resetMovieAction,
 } from '@app/store/actions';
 
 const initialState = {
@@ -15,18 +15,18 @@ const initialState = {
     genres: [],
     homepage: 'http://',
     id: 0,
+    isLoadingDetails: false,
+    isRecommendationsLoaded: false,
+    isRecommendationsLoading: false,
+    isRecommendationsMoreLoading: false,
     overview: '',
+    page: 0,
     popularity: 0,
     poster_path: 'http://placehold.jp/480x640.png',
     recommendations: [],
     release_date: '2000-01-01',
     tagline: '',
     title: '',
-    isLoadingDetails: false,
-    isRecommendationsLoaded: false,
-    isRecommendationsLoading: false,
-    isRecommendationsMoreLoading: false,
-    page: 0,
     total: 0,
 };
 
