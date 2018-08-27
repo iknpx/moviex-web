@@ -4,6 +4,10 @@ import {
     onSearchMoreMoviesStartAction,
     onSearchMoviesStartAction,
     setSearchQueryAction,
+
+    onFetchMovieDetailsStartAction,
+    onFetchMovieRecommendationsStartAction,
+    onFetchMoreMovieRecommendationsStartAction,
 } from '@app/store/actions';
 
 import { socket } from './handlers';
@@ -40,7 +44,13 @@ export const emitSearch = (query, page = 1) => dispatch => {
 
 // @emit: movie details
 export const emitMovieDetails = id => dispatch => {
-    dispatch();
+    dispatch(
+        onFetchMovieDetailsStartAction(),
+    );
+
+    dispatch(
+        onFetchMovieRecommendationsStartAction(),
+    );
 
     socket.emit('GET: MOVIE DETAILS', { id });
     socket.emit('GET: RECOMMENDED MOVIES', { id, page: 1 });
@@ -48,7 +58,9 @@ export const emitMovieDetails = id => dispatch => {
 
 // @emit: movie recommendations
 export const emitMovieRecommendations = (id, page) => dispatch => {
-    dispatch();
+    dispatch(
+        onFetchMoreMovieRecommendationsStartAction(),
+    );
 
     socket.emit('GET: RECOMMENDED MOVIES', { id, page });
 };

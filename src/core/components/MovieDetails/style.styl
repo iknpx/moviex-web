@@ -1,2 +1,67 @@
+@import '../../mixins/animate'
+@import '../../variables'
+
 .container
+	fadeIn(.7s)
+	background-position center
+	background-repeat no-repeat
+	background-size cover
+	box-shadow 0 2px 4px 0 rgba(0, 0, 0, .5)
 	display flex
+	height $top-movie-height
+	width 100%
+
+.overlay
+	align-items center
+	background-color rgba(45, 45, 45, .7)
+	display flex
+	flex-direction column
+	height $top-movie-height
+	width 100%
+	padding 20px 0
+	color #EFEFEF
+
+.content
+	display flex
+	flex-direction column
+
+.poster
+	margin-right 25px
+	border-radius 2px
+	box-shadow 0 2px 7px 0 rgba(0, 0, 0, .17)
+	width 185px
+	height 278px
+
+.movie
+	margin-top 40px
+	display flex
+
+.description
+	display flex
+	flex-direction column
+
+.title
+	font-size 1.4em
+
+.tagline
+	color #AAA
+
+.releasedate
+	font-size .9em
+	margin 10px 0
+
+.overview
+	color #CCC
+
+.homepge
+	color #CCC
+	border-bottom 1px dashed #AAA
+	align-self flex-start
+
+.genres
+	display flex
+	flex-direction column
+	padding 10px 0 20px
+
+.genre
+	font-size .9em

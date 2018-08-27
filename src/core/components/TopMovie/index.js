@@ -22,7 +22,7 @@ export default class TopMovie extends Component {
                         {overview}
                     </span>
                 </Container>
-                <ButtonLink url={`/movie/${id}`} title="DETAILS" />
+                <ButtonLink url={`/${id}`} title="DETAILS" />
                 <div className={style.footer}>
                     <span className={style.date}>
                         {moment(release_date).format('DD of MMMM, YYYY')}

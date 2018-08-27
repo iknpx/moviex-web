@@ -1,3 +1,4 @@
+export BackButton from './BackButton';
 export ButtonLink from './ButtonLink';
 export ConnectionError from './ConnectionError';
 export Container from './Container';

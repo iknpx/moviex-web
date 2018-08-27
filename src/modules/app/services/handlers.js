@@ -3,19 +3,27 @@ import env from '@core/environment.json';
 
 import {
     connectionErrorAction,
+    connectionStartAction,
     connectionSuccessAction,
-    serverStatusErrorAction,
-    serverStatusSuccessAction,
-
+    onFetchMoreMovieRecommendationsSuccessAction,
     onFetchMoreMoviesSuccessAction,
+    onFetchMovieDetailsSuccessAction,
+    onFetchMovieRecommendationsSuccessAction,
     onFetchMoviesSuccessAction,
     onSearchMoreMoviesSuccessAction,
     onSearchMoviesSuccessAction,
+    serverStatusErrorAction,
+    serverStatusStartAction,
+    serverStatusSuccessAction,
 } from '@app/store/actions';
 
 export const socket = io(env.WS.HOST);
 
 export const connect = ({ dispatch }) => {
+    dispatch(
+        connectionStartAction(),
+    );
+
     socket.on('connect', handleConnect(dispatch));
     socket.on('disconnect', handleDissconnect(dispatch));
 
@@ -32,6 +40,10 @@ const handleConnect = dispatch => () => {
 
     dispatch(
         connectionSuccessAction(),
+    );
+
+    dispatch(
+        serverStatusStartAction(),
     );
 };
 
@@ -56,6 +68,10 @@ const handleServerError = dispatch => error => {
     dispatch(
         serverStatusErrorAction(error),
     );
+
+    dispatch(
+        serverStatusStartAction(),
+    );
 };
 
 // @on: movies list
@@ -75,10 +91,16 @@ const handleMovies = dispatch => data => {
 
 // @on: movie details
 const handleMovieDetails = dispatch => data => {
-    dispatch(data);
+    dispatch(
+        onFetchMovieDetailsSuccessAction(data),
+    );
 };
 
 // @on: movie recommendations
 const handleRecommendations = dispatch => data => {
-    dispatch(data);
+    dispatch(
+        data.page === 1
+            ? onFetchMovieRecommendationsSuccessAction(data)
+            : onFetchMoreMovieRecommendationsSuccessAction(data),
+    );
 };

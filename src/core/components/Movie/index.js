@@ -12,7 +12,7 @@ export default class Movie extends Component {
     render() {
         const { movie: { id, poster_path, title, genres } } = this.props;
 
-        return <Link to={`/movie/${id}`} className={style.container}>
+        return <Link to={`/${id}`} className={style.container}>
             <div className={style.item} style={{ backgroundImage: `url(${poster_path})` }}>
                 <div className={style.description}>
                     <span className={style.title}>{title}</span>

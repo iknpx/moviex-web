@@ -1,9 +1,12 @@
 import { createReducer } from 'redux-act';
 import {
-    concatMovieRecommendationsAction,
-    fetchMovieDetailsSuccessAction,
-    resetMovieDetailsAction,
-    setMovieRecommendationsAction,
+    resetMovieAction,
+    onFetchMovieDetailsStartAction,
+    onFetchMovieDetailsSuccessAction,
+    onFetchMovieRecommendationsStartAction,
+    onFetchMovieRecommendationsSuccessAction,
+    onFetchMoreMovieRecommendationsStartAction,
+    onFetchMoreMovieRecommendationsSuccessAction,
 } from '@app/store/actions';
 
 const initialState = {
@@ -19,20 +22,47 @@ const initialState = {
     release_date: '2000-01-01',
     tagline: '',
     title: '',
+    isLoadingDetails: false,
+    isRecommendationsLoaded: false,
+    isRecommendationsLoading: false,
+    isRecommendationsMoreLoading: false,
+    page: 0,
+    total: 0,
 };
 
 export default createReducer({
-    [resetMovieDetailsAction]: () => initialState,
-    [concatMovieRecommendationsAction]: (state, data) => ({
+    [resetMovieAction]: () => initialState,
+    [onFetchMovieDetailsStartAction]: state => ({
         ...state,
-        recommendations: [...state.recommendations, ...data.results],
+        isLoadingDetails: true,
     }),
-    [fetchMovieDetailsSuccessAction]: (state, data) => ({
+    [onFetchMovieDetailsSuccessAction]: (state, payload) => ({
         ...state,
-        ...data,
+        ...payload,
+        isLoadingDetails: false,
     }),
-    [setMovieRecommendationsAction]: (state, data) => ({
+    [onFetchMovieRecommendationsStartAction]: state => ({
         ...state,
-        recommendations: data.results,
+        isRecommendationsLoading: true,
     }),
+    [onFetchMovieRecommendationsSuccessAction]: (state, payload) => ({
+        ...state,
+        recommendations: payload.results,
+        page: payload.page,
+        total: payload.total_results,
+        isRecommendationsLoaded: true,
+        isRecommendationsLoading: false,
+    }),
+    [onFetchMoreMovieRecommendationsStartAction]: state => ({
+        ...state,
+        isRecommendationsMoreLoading: true,
+    }),
+    [onFetchMoreMovieRecommendationsSuccessAction]: (state, payload) => ({
+        ...state,
+        recommendations: [...state.recommendations, ...payload.results],
+        page: payload.page,
+        total: payload.total_results,
+        isRecommendationsMoreLoading: false,
+    }),
+
 }, initialState);

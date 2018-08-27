@@ -23,15 +23,15 @@ export class App extends Component {
     };
 
     render() {
-        const { status: { connected } } = this.props;
+        const { status: { connected, isConnectionProceed } } = this.props;
 
         return (
             <Layout>
                 {connected ? <Switch>
                     <Route exact path="/" component={List} />
-                    <Route path="/movie/:id" component={Movie} />
+                    <Route path="/:id" component={Movie} />
                     <Redirect to="/" />
-                </Switch> : <ConnectionError />}
+                </Switch> : (!isConnectionProceed && <ConnectionError />)}
             </Layout>
         );
     }
