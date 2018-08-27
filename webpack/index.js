@@ -16,6 +16,7 @@ const options = {
         alias: {
             '@app': path.resolve(__dirname, '../src/modules/app'),
             '@core': path.resolve(__dirname, '../src/core'),
+            '@src': path.resolve(__dirname, '../src'),
         },
     },
     resolveLoader: {

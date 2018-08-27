@@ -4,11 +4,6 @@ import {
     fetchMovieDetailsSuccessAction,
     fetchMovieRecommendationsStartAction,
     fetchMovieRecommendationsSuccessAction,
-    fetchMoviesStartAction,
-    fetchMoviesSuccessAction,
-    setSearchStringAction,
-    searchMoviesStartAction,
-    searchMoviesSuccessAction,
 } from '@app/store/actions';
 
 export default createReducer({
@@ -31,23 +26,6 @@ export default createReducer({
         recommendationsResultsCount: data.total_results,
         recommendationsPagesCount: data.total_pages,
     }),
-    [fetchMoviesStartAction]: (state, page) => ({
-        ...state,
-        isMoviesFetching: true,
-        moviesPage: page,
-    }),
-    [fetchMoviesSuccessAction]: (state, data) => ({
-        ...state,
-        isMoviesFetching: false,
-        moviesResultsCount: data.total_results,
-        moviesPagesCount: data.total_pages,
-    }),
-    [setSearchStringAction]: (state, searchString) => ({
-        ...state,
-        searchString,
-    }),
-    [searchMoviesStartAction]: state => ({ ...state, isSearching: true }),
-    [searchMoviesSuccessAction]: state => ({ ...state, isSearching: false }),
 }, {
     isMovieDetailsFetching: false,
     isMovieRecommendationsFetching: false,

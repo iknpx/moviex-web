@@ -1,66 +1,107 @@
 import React, { Component } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Container, Header, Loading, LoadMore, Movie, TopMovie } from '@core/components';
+import {
+    Container,
+    Header,
+    Loading,
+    LoadingMore,
+    Movie,
+    NoMoviesFound,
+    TopMovie,
+} from '@core/components';
 import { DisptachProps } from '@core/props';
 
+import { emmiters } from '@app/services';
 import style from './style.styl';
-
-import * as MovieService from '../../service';
 
 @connect(({ env, movies }) => ({ env, movies }))
 export default class MoviesList extends Component {
     static propTypes = {
         ...DisptachProps,
-        env: PropTypes.object,
-        movies: PropTypes.array,
+        movies: PropTypes.object,
     };
 
-    handleSearch = searchString => {
+    handleSearch = query => {
         const { dispatch } = this.props;
 
-        dispatch(
-            MovieService.emitSearch(searchString, 1),
-        );
+        if (query.length) {
+            dispatch(
+                emmiters.emitSearch(query),
+            );
+        } else {
+            dispatch(
+                emmiters.emitPopularMovies(),
+            );
+        }
     };
 
-    handleLoadMore = () => {
-        const { dispatch, env: { moviesPage, searchString } } = this.props;
+    handleLoadMore = page => {
+        const {
+            dispatch,
+            movies: {
+                query,
+            },
+        } = this.props;
 
         dispatch(
-            searchString
-                ? MovieService.emitSearch(searchString, moviesPage + 1)
-                : MovieService.emitPopularMovies(moviesPage + 1),
-        );
-    };
-
-    componentDidMount() {
-        const { dispatch } = this.props;
-
-        dispatch(
-            MovieService.emitPopularMovies(),
+            query.length
+                ? emmiters.emitSearch(query, page)
+                : emmiters.emitPopularMovies(page),
         );
     }
 
+    componentDidMount() {
+        const {
+            dispatch,
+            movies: {
+                isLoaded,
+            },
+        } = this.props;
+
+        if (!isLoaded) {
+            dispatch(
+                emmiters.emitPopularMovies(),
+            );
+        }
+    }
+
     render() {
-        const { movies, env: { searchString, isMoviesFetching, isSearching, moviesResultsCount } } = this.props;
+        const {
+            movies: {
+                isLoading,
+                isLoadingMore,
+                isSearching,
+                isSearchingMore,
+                list,
+                query,
+                total,
+            },
+        } = this.props;
 
         return <div className={style.container}>
-            { isMoviesFetching && !movies.length ? <Loading /> : (
-                <React.Fragment>
-                    <Header onSearch={this.handleSearch} value={searchString} isSearching={isSearching} />
-                    {movies.length && <TopMovie movie={movies[0]} />}
-                    <Container className={style.movies}>
-                        <div className={style.content}>
-                            {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-                        </div>
-                        {moviesResultsCount - movies.length > 0 && <LoadMore
-                            onLoad={this.handleLoadMore}
-                            count={isMoviesFetching ? 0 : moviesResultsCount - movies.length} />}
-                    </Container>
-                </React.Fragment>
-            ) }
+            <Header onSearch={this.handleSearch} value={query} isSearching={isSearching} />
+            <div className={style.body}>
+                {isLoading && <Loading />}
+                {!!list.length && !isLoading ? (
+                    <React.Fragment>
+                        <TopMovie movie={list[0]} />
+                        <InfiniteScroll pageStart={1}
+                            hasMore={!isLoadingMore && !isSearchingMore && total - list.length > 0}
+                            loadMore={this.handleLoadMore}
+                            threshold={800}>
+                            <Container className={style.movies}>
+                                <div className={style.content}>
+                                    {list.map(movie => <Movie key={movie.id} movie={movie} />)}
+                                </div>
+                            </Container>
+                        </InfiniteScroll>
+                    </React.Fragment>
+                ) : !isLoading && !isSearching && (<NoMoviesFound />)}
+                {(isLoadingMore || isSearchingMore) && <LoadingMore />}
+            </div>
         </div>;
     }
 }

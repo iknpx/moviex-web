@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import style from './style.styl';
 
-export default class Loading extends Component {
+export default class LoadingMore extends Component {
     render() {
         return <div className={style.container}>
-            <svg width={65} height={65} viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#333" className={style.svg}>
+            <span className={style.title}>Loading</span>
+            <svg width={20} height={20} viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#333" className={style.svg}>
                 <g fill="none" fillRule="evenodd">
                     <g transform="translate(1 1)" strokeWidth="2">
                         <circle strokeOpacity=".4" cx="18" cy="18" r="18"/>

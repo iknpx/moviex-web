@@ -1,20 +1,27 @@
 @import '~@core/mixins/route'
+@import '~@core/variables'
 route()
 
 .container
 	width 100%
 	align-items center
 
+.body
+	align-items center
+	display flex
+	flex-direction column
+	margin-top $header-height
+	width 100%
+	padding-bottom 50px
+
 .movies
 	display flex
 	flex-direction column
 	align-items center
-	padding-bottom 50px
 
 .content
 	display flex
 	flex-wrap wrap
-	justify-content center
 	padding 10px 0
 	position relative
 	width auto

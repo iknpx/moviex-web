@@ -8,9 +8,9 @@ import { hot } from 'react-hot-loader';
 import { Provider, connect } from 'react-redux';
 import { render } from 'react-dom';
 
-import { Layout } from '@core/components';
+import { ConnectionError, Layout } from '@core/components';
 
-import * as Service from './service';
+import { handlers as  SocketHandlers } from './services';
 import { List, Movie } from './routes';
 import { store, history } from './store';
 
@@ -23,22 +23,22 @@ export class App extends Component {
     };
 
     render() {
-        const { status: { connected, status } } = this.props;
+        const { status: { connected } } = this.props;
 
         return (
             <Layout>
-                {connected && status && <Switch>
+                {connected ? <Switch>
                     <Route exact path="/" component={List} />
                     <Route path="/movie/:id" component={Movie} />
                     <Redirect to="/" />
-                </Switch>}
+                </Switch> : <ConnectionError />}
             </Layout>
         );
     }
 }
 
 export default function() {
-    Service.connect(store);
+    SocketHandlers.connect(store);
 
     render(
         <Provider store={store}>

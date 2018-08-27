@@ -11,7 +11,7 @@ import style from './style.styl';
 export default class MoviesList extends Component {
     static propTypes = {
         ...DisptachProps,
-        movies: PropTypes.array,
+        movies: PropTypes.object,
     };
 
     render() {
