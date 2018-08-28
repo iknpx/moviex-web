@@ -1,2 +1,2 @@
-export List from './List';
-export Movie from './Movie';
+export ListRoute from './List';
+export MovieRoute from './Movie';

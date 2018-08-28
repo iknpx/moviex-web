@@ -11,7 +11,7 @@ import { render } from 'react-dom';
 import { ConnectionError, Layout } from '@core/components';
 
 import { handlers as  SocketHandlers } from './services';
-import { List, Movie } from './routes';
+import { ListRoute, MovieRoute } from './routes';
 import { store, history } from './store';
 
 @withRouter
@@ -28,8 +28,8 @@ export class App extends Component {
         return (
             <Layout>
                 {connected ? <Switch>
-                    <Route exact path="/" component={List} />
-                    <Route path="/:id" component={Movie} />
+                    <Route exact path="/" component={ListRoute} />
+                    <Route path="/:id" component={MovieRoute} />
                     <Redirect to="/" />
                 </Switch> : (!isConnectionProceed && <ConnectionError />)}
             </Layout>

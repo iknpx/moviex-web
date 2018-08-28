@@ -18,7 +18,7 @@ import { emmiters } from '@app/services';
 import style from './style.styl';
 
 @connect(({ movies }) => ({ movies }))
-export default class MoviesList extends Component {
+export default class ListRoute extends Component {
     static propTypes = {
         ...DisptachProps,
         movies: PropTypes.object,

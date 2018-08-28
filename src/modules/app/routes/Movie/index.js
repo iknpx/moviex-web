@@ -20,7 +20,7 @@ import style from './style.styl';
 
 @withRouter
 @connect(({ details }) => ({ details }))
-export default class MoviesList extends Component {
+export default class MovieRoute extends Component {
     static propTypes = {
         ...DisptachProps,
         ...RouterProps,
