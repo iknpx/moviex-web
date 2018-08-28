@@ -17,7 +17,7 @@ import { emmiters } from '@app/services';
 
 import style from './style.styl';
 
-@connect(({ env, movies }) => ({ env, movies }))
+@connect(({ movies }) => ({ movies }))
 export default class MoviesList extends Component {
     static propTypes = {
         ...DisptachProps,
