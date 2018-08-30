@@ -8,7 +8,7 @@ import { hot } from 'react-hot-loader';
 import { Provider, connect } from 'react-redux';
 import { render } from 'react-dom';
 
-import { ConnectionError, Layout } from '@core/components';
+import { ConnectionError, Layout, Loading } from '@core/components';
 
 import { handlers as  SocketHandlers } from './services';
 import { ListRoute, MovieRoute } from './routes';
@@ -35,7 +35,7 @@ export class App extends Component {
                 <Route exact path="/" component={ListRoute} />
                 <Route path="/:id" component={MovieRoute} />
                 <Redirect to="/" />
-            </Switch> : (!isConnectionProceed && <ConnectionError />)}
+            </Switch> : (!isConnectionProceed ? <ConnectionError /> : <Loading />)}
         </Layout>;
     }
 }
