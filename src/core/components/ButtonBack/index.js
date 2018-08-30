@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
+import { RouterProps } from '../../props';
 import style from './style.styl';
 
+@withRouter
 export default class ButtonBack extends Component {
     static propTypes = {
+        ...RouterProps,
         className: PropTypes.string,
     };
 
@@ -13,10 +16,20 @@ export default class ButtonBack extends Component {
         className: '',
     };
 
+    handleClick = () => {
+        const {
+            history: {
+                goBack,
+            },
+        } = this.props;
+
+        goBack();
+    }
+
     render() {
         const { className } = this.props;
 
-        return <Link to="/" className={`${style.container} ${className}`}>
+        return <div className={`${style.container} ${className}`} onClick={this.handleClick}>
             <svg height="32px"
                 version="1.1"
                 viewBox="0 0 32 32"
@@ -26,6 +39,6 @@ export default class ButtonBack extends Component {
                     fill="#fff"
                     fillRule="evenodd" />
             </svg>
-        </Link>;
+        </div>;
     }
 }

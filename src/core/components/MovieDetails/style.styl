@@ -10,22 +10,25 @@
 	background-size cover
 	box-shadow 0 2px 4px 0 rgba(0, 0, 0, .5)
 	display flex
-	height $top-movie-height
+	height auto
+	min-height $top-movie-height
 	width 100%
 
 .overlay
 	align-items center
 	background-color rgba(45, 45, 45, .7)
+	color #EFEFEF
 	display flex
 	flex-direction column
-	height $top-movie-height
+	height auto
+	min-height $top-movie-height
+	padding 20px 0 45px
 	width 100%
-	padding 20px 0
-	color #EFEFEF
 
 .content
 	display flex
 	flex-direction column
+	flex-wrap: nowrap;
 	padding 0 35px
 
 .poster
