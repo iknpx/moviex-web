@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import moment from 'moment';
 
-import Container from '../Container';
 import ButtonBack from '../ButtonBack';
+import Container from '../Container';
+import Download from '../Download';
+
 import style from './style.styl';
 
 export default class MovieDetails extends Component {
     static propTypes = {
         movie: PropTypes.object.isRequired,
+        onTorrentsShown: PropTypes.func.isRequired,
     };
+
+    handleTorrentsShown = () => {
+        const { onTorrentsShown } = this.props;
+
+        onTorrentsShown();
+    }
 
     render() {
         const {
@@ -22,13 +31,17 @@ export default class MovieDetails extends Component {
                 release_date,
                 tagline,
                 title,
+                torrents,
             },
         } = this.props;
 
         return <div className={style.container} style={{ backgroundImage: `url(${backdrop_path})` }}>
             <div className={style.overlay}>
                 <Container className={style.content}>
-                    <ButtonBack className={style.back} />
+                    <div className={style.header}>
+                        <ButtonBack className={style.back} />
+                        <Download torrents={torrents} onClick={this.handleTorrentsShown} />
+                    </div>
                     <div className={style.movie}>
                         <img src={poster_path} alt={title} className={style.poster} />
                         <div className={style.description}>

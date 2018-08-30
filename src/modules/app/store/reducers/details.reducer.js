@@ -27,6 +27,7 @@ const initialState = {
     release_date: '2000-01-01',
     tagline: '',
     title: '',
+    torrents: [],
     total: 0,
 };
 

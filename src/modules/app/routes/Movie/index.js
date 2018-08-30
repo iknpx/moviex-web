@@ -11,7 +11,9 @@ import {
     Movie,
     MovieDetails,
     NoMoviesFound,
+    Torrents,
 } from '@core/components';
+
 import { DisptachProps, RouterProps } from '@core/props';
 import { emmiters } from '@app/services';
 import { resetMovieAction } from '@app/store/actions';
@@ -27,6 +29,10 @@ export default class MovieRoute extends Component {
         details: PropTypes.object,
     };
 
+    state = {
+        isTorrentsShow: false,
+    };
+
     handleLoadMore = page => {
         const {
             dispatch,
@@ -38,7 +44,15 @@ export default class MovieRoute extends Component {
         dispatch(
             emmiters.emitMovieRecommendations(id, page),
         );
-    }
+    };
+
+    handleClose = () => {
+        this.setState({ isTorrentsShow: false });
+    };
+
+    handleTorrentsShown = () => {
+        this.setState({ isTorrentsShow: true });
+    };
 
     componentDidMount() {
         const {
@@ -90,8 +104,11 @@ export default class MovieRoute extends Component {
             },
         } = this.props;
 
+        const { isTorrentsShow } = this.state;
+
         return <div className={style.container}>
-            {isLoadingDetails ? <Loading /> : <MovieDetails movie={details} />}
+            {isTorrentsShow && <Torrents torrents={details.torrents} onClose={this.handleClose} />}
+            {isLoadingDetails ? <Loading /> : <MovieDetails movie={details} onTorrentsShown={this.handleTorrentsShown} />}
             {!isLoadingDetails && <Container className={style.movies}>
                 {!!recommendations.length && <span className={style.title}>Recommended Movies</span>}
                 {!!recommendations.length && !isRecommendationsLoading ? (

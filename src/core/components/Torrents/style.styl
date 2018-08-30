@@ -1,0 +1,60 @@
+@import '../../mixins/animate';
+
+.container
+	display flex
+	flex-direction column
+	align-items center
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	bottom 0
+	z-index 100
+	background-color rgba(0, 0, 0, .8)
+	overflow scroll
+	padding 5vh 0
+
+.panel
+	fadeIn(.6s)
+	position absolute
+	width 80vw
+	height auto
+	background-color #fff
+	padding 20px
+	border-radius 2px
+	display flex
+	flex-direction column
+	z-index 100
+	margin-bottom 5vh
+
+.header
+	height 60px
+	border-bottom 1px solid #EEE
+	display flex
+	justify-content flex-end
+
+.body
+	display flex
+	flex-direction column
+	padding 20px 0
+
+.close
+	cursor pointer
+
+.row
+	padding 5px 0
+	display flex
+	flex-direction column
+	user-select none
+
+.link
+	white-space nowrap
+	overflow hidden
+	text-overflow ellipsis
+	color #5B86EC
+	border-bottom 1px dashed #5B86EC
+
+.size
+	font-size .9em
+	text-transform uppercase
+	color #666
