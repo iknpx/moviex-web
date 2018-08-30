@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import style from './style.styl';
 
 export default class ButtonBack extends Component {
+    static propTypes = {
+        className: PropTypes.string,
+    };
+
+    static defaultProps = {
+        className: '',
+    };
+
     render() {
-        return <Link to="/" className={style.container}>
+        const { className } = this.props;
+
+        return <Link to="/" className={`${style.container} ${className}`}>
             <svg height="32px"
                 version="1.1"
                 viewBox="0 0 32 32"

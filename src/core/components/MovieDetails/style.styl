@@ -1,5 +1,7 @@
-@import '../../mixins/animate'
 @import '../../variables'
+@import '../../mixins/animate'
+@import '../../mixins/media'
+
 
 .container
 	fadeInDown(.3s)
@@ -24,6 +26,7 @@
 .content
 	display flex
 	flex-direction column
+	padding 0 35px
 
 .poster
 	margin-right 25px
@@ -65,3 +68,25 @@
 
 .genre
 	font-size .9em
+
+
++media-mobile()
+	.container, .overlay
+		height auto
+
+	.container
+		fadeIn(.3s)
+
+	.overlay
+		padding 45px 0
+
+	.back
+		display none
+
+	.movie
+		flex-direction column
+		align-items center
+
+	.poster
+		margin-bottom 30px
+

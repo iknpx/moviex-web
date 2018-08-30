@@ -1,6 +1,7 @@
-@import '../../mixins/animate'
-@import '../../mixins/placeholder'
 @import '../../variables'
+@import '../../mixins/animate'
+@import '../../mixins/media'
+@import '../../mixins/placeholder'
 
 .container
 	fadeInDown(.2s)
@@ -16,6 +17,7 @@
 
 .content
 	justify-content space-between
+	padding 0 25px
 
 .name
 	color #EEE
@@ -55,3 +57,7 @@
 	flex-grow 1
 	outline 0
 	padding 0 16px
+
++media-mobile()
+	.name
+		display none

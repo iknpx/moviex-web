@@ -18,9 +18,7 @@ export default class TopMovie extends Component {
             <div className={style.overlay}>
                 <Container className={style.header}>
                     <span className={style.title}>{title}</span>
-                    <span className={style.overview}>
-                        {overview}
-                    </span>
+                    <span className={style.overview}>{overview}</span>
                 </Container>
                 <ButtonLink url={`/${id}`} title="DETAILS" />
                 <div className={style.footer}>

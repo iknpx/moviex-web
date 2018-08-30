@@ -92,7 +92,7 @@ export default class MovieRoute extends Component {
 
         return <div className={style.container}>
             {isLoadingDetails ? <Loading /> : <MovieDetails movie={details} />}
-            {!isLoadingDetails && <Container className={style.recommendations}>
+            {!isLoadingDetails && <Container className={style.movies}>
                 {!!recommendations.length && <span className={style.title}>Recommended Movies</span>}
                 {!!recommendations.length && !isRecommendationsLoading ? (
                     <React.Fragment>
@@ -100,11 +100,9 @@ export default class MovieRoute extends Component {
                             hasMore={!isRecommendationsMoreLoading && total - recommendations.length > 0}
                             loadMore={this.handleLoadMore}
                             threshold={800}>
-                            <Container className={style.movies}>
-                                <div className={style.content}>
-                                    {recommendations.map(movie => <Movie key={movie.id} movie={movie} />)}
-                                </div>
-                            </Container>
+                            <div className={style.content}>
+                                {recommendations.map(movie => <Movie key={movie.id} movie={movie} />)}
+                            </div>
                         </InfiniteScroll>
                     </React.Fragment>
                 ) : !!isRecommendationsLoaded && (<NoMoviesFound />)}

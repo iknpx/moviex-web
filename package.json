@@ -4,6 +4,7 @@
   "scripts": {
     "dist": "webpack --config ./webpack/index.js",
     "lint": "eslint .",
+    "lint:diff": "LIST=`git diff-index --name-only HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then eslint $LIST; fi",
     "start": "node ./server.js"
   },
   "repository": {
@@ -15,8 +16,11 @@
   },
   "config": {
     "ghooks": {
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run lint:diff"
     }
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -37,16 +41,21 @@
     "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
     "autoprefixer": "^8.6.5",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.3",
-    "babel-jest": "^23.0.1",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.0",
     "babel-plugin-webpack-alias": "^2.1.2",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",

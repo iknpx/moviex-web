@@ -23,17 +23,20 @@ export class App extends Component {
     };
 
     render() {
-        const { status: { connected, isConnectionProceed } } = this.props;
+        const {
+            status: {
+                connected,
+                isConnectionProceed,
+            },
+        } = this.props;
 
-        return (
-            <Layout>
-                {connected ? <Switch>
-                    <Route exact path="/" component={ListRoute} />
-                    <Route path="/:id" component={MovieRoute} />
-                    <Redirect to="/" />
-                </Switch> : (!isConnectionProceed && <ConnectionError />)}
-            </Layout>
-        );
+        return <Layout>
+            {connected ? <Switch>
+                <Route exact path="/" component={ListRoute} />
+                <Route path="/:id" component={MovieRoute} />
+                <Redirect to="/" />
+            </Switch> : (!isConnectionProceed && <ConnectionError />)}
+        </Layout>;
     }
 }
 

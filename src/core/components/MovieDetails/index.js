@@ -28,7 +28,7 @@ export default class MovieDetails extends Component {
         return <div className={style.container} style={{ backgroundImage: `url(${backdrop_path})` }}>
             <div className={style.overlay}>
                 <Container className={style.content}>
-                    <ButtonBack />
+                    <ButtonBack className={style.back} />
                     <div className={style.movie}>
                         <img src={poster_path} alt={title} className={style.poster} />
                         <div className={style.description}>

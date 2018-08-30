@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
-    Container,
     Header,
     Loading,
     LoadingMore,
@@ -92,11 +91,9 @@ export default class ListRoute extends Component {
                             hasMore={!isLoadingMore && !isSearchingMore && total - list.length > 0}
                             loadMore={this.handleLoadMore}
                             threshold={800}>
-                            <Container className={style.movies}>
-                                <div className={style.content}>
-                                    {list.map(movie => <Movie key={movie.id} movie={movie} />)}
-                                </div>
-                            </Container>
+                            <div className={style.content}>
+                                {list.map(movie => <Movie key={movie.id} movie={movie} />)}
+                            </div>
                         </InfiniteScroll>
                     </React.Fragment>
                 ) : !isLoading && !isSearching && (<NoMoviesFound />)}
