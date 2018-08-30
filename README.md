@@ -1,14 +1,16 @@
 # Moviex
 ![Build Status](https://drone.dayler.io/api/badges/iknpx/moviex-app/status.svg)
 
-[Example](https://moviex.dayler.io)
+[Example](https://moviex.ml)
 
 ### Stack
-* [React](https://reactjs.org) / [Redux](https://redux.js.org)
-* [Webpack](https://webpack.js.org)
-* [Stylus](http://stylus-lang.com/) / [Rupture](http://jescalan.github.io/rupture)
-* [ESLint](https://eslint.org)
 * [Drone CI](https://drone.io)
+* [ESLint](https://eslint.org)
+* [React](https://reactjs.org)
+* [Redux](https://redux.js.org)
+* [Rupture](http://jescalan.github.io/rupture)
+* [Stylus](http://stylus-lang.com)
+* [Webpack](https://webpack.js.org)
 
 ### Quick start
 * Clone this repo using `git clone git@github.com:iknpx/moviex-app.git`
