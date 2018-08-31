@@ -10,6 +10,7 @@ import {
     onFetchMovieDetailsSuccessAction,
     onFetchMovieRecommendationsSuccessAction,
     onFetchMoviesSuccessAction,
+    onFetchMovieTorrentsSuccessAction,
     onSearchMoreMoviesSuccessAction,
     onSearchMoviesSuccessAction,
     serverStatusErrorAction,
@@ -32,6 +33,7 @@ export const connect = ({ dispatch }) => {
     socket.on('POST: RECOMMENDED', handleRecommendations(dispatch));
     socket.on('POST: SERVER ERROR', handleServerError(dispatch));
     socket.on('POST: SERVER STATUS', handleServerStatus(dispatch));
+    socket.on('POST: TORRENTS', handleTorrents(dispatch));
 };
 
 // @on: connect
@@ -102,5 +104,12 @@ const handleRecommendations = dispatch => data => {
         data.page === 1
             ? onFetchMovieRecommendationsSuccessAction(data)
             : onFetchMoreMovieRecommendationsSuccessAction(data),
+    );
+};
+
+// @on: movie torrents
+const handleTorrents = dispatch => data => {
+    dispatch(
+        onFetchMovieTorrentsSuccessAction(data),
     );
 };

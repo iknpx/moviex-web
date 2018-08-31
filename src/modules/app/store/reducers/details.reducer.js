@@ -6,6 +6,8 @@ import {
     onFetchMovieDetailsSuccessAction,
     onFetchMovieRecommendationsStartAction,
     onFetchMovieRecommendationsSuccessAction,
+    onFetchMovieTorrentsStartAction,
+    onFetchMovieTorrentsSuccessAction,
     resetMovieAction,
 } from '@app/store/actions';
 
@@ -19,6 +21,7 @@ const initialState = {
     isRecommendationsLoaded: false,
     isRecommendationsLoading: false,
     isRecommendationsMoreLoading: false,
+    isTorrentsLoading: false,
     overview: '',
     page: 0,
     popularity: 0,
@@ -65,5 +68,13 @@ export default createReducer({
         total: payload.total_results,
         isRecommendationsMoreLoading: false,
     }),
-
+    [onFetchMovieTorrentsStartAction]: state => ({
+        ...state,
+        isTorrentsLoading: true,
+    }),
+    [onFetchMovieTorrentsSuccessAction]: (state, payload) => ({
+        ...state,
+        isTorrentsLoading: false,
+        torrents: payload,
+    }),
 }, initialState);

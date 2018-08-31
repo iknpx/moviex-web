@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import {
+    ButtonTorrents,
     Container,
     Loading,
     LoadingMore,
     Movie,
     MovieDetails,
     NoMoviesFound,
-    Torrents,
 } from '@core/components';
 
 import { DisptachProps, RouterProps } from '@core/props';
@@ -29,9 +29,18 @@ export default class MovieRoute extends Component {
         details: PropTypes.object,
     };
 
-    state = {
-        isTorrentsShow: false,
-    };
+    handleGetTorrents = () => {
+        const {
+            dispatch,
+            details: {
+                title,
+            },
+        } = this.props;
+
+        dispatch(
+            emmiters.emitMovieTorrents(title),
+        );
+    }
 
     handleLoadMore = page => {
         const {
@@ -44,14 +53,6 @@ export default class MovieRoute extends Component {
         dispatch(
             emmiters.emitMovieRecommendations(id, page),
         );
-    };
-
-    handleClose = () => {
-        this.setState({ isTorrentsShow: false });
-    };
-
-    handleTorrentsShown = () => {
-        this.setState({ isTorrentsShow: true });
     };
 
     componentDidMount() {
@@ -99,18 +100,26 @@ export default class MovieRoute extends Component {
                 isRecommendationsLoaded,
                 isRecommendationsLoading,
                 isRecommendationsMoreLoading,
+                isTorrentsLoading,
                 recommendations,
+                torrents,
                 total,
             },
         } = this.props;
 
-        const { isTorrentsShow } = this.state;
-
         return <div className={style.container}>
-            {isTorrentsShow && <Torrents torrents={details.torrents} onClose={this.handleClose} />}
-            {isLoadingDetails ? <Loading /> : <MovieDetails movie={details} onTorrentsShown={this.handleTorrentsShown} />}
+            {isLoadingDetails ? <Loading /> : <MovieDetails movie={details} />}
             {!isLoadingDetails && <Container className={style.movies}>
-                {!!recommendations.length && <span className={style.title}>Recommended Movies</span>}
+                <div className={style.actions}>
+                    <Container className={style.actionsContainer}>
+                        {torrents.length ? <div className={style.torrents}>
+                            {torrents.map(torrent => <div className={style.torrent} key={torrent.magnet}>
+                                <span className={style.size}>{torrent.size}</span>
+                                <a target="__blank" href={torrent.magnet} className={style.link}>{torrent.title}</a>
+                            </div>)}
+                        </div> : <ButtonTorrents isLoading={isTorrentsLoading} onClick={this.handleGetTorrents} />}
+                    </Container>
+                </div>
                 {!!recommendations.length && !isRecommendationsLoading ? (
                     <React.Fragment>
                         <InfiniteScroll pageStart={1}

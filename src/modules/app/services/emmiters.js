@@ -7,6 +7,7 @@ import {
     onSearchMoreMoviesStartAction,
     onSearchMoviesStartAction,
     setSearchQueryAction,
+    onFetchMovieTorrentsStartAction,
 } from '@app/store/actions';
 
 import { socket } from './handlers';
@@ -62,4 +63,13 @@ export const emitMovieRecommendations = (id, page) => dispatch => {
     );
 
     socket.emit('GET: RECOMMENDED MOVIES', { id, page });
+};
+
+// @emit: movie torrents
+export const emitMovieTorrents = query => dispatch => {
+    dispatch(
+        onFetchMovieTorrentsStartAction(),
+    );
+
+    socket.emit('GET: TORRENTS', { query });
 };

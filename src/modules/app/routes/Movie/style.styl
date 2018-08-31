@@ -1,3 +1,4 @@
+@import '~@core/mixins/animate'
 @import '~@core/mixins/route'
 route()
 
@@ -11,6 +12,41 @@ route()
 	position relative
 	width auto
 	justify-content center
+
+.actions
+	padding 20px 35px
+	flex-direction column
+	width 100%
+	background-color #EEE
+	display flex
+	flex-direction column
+	align-items center
+
+	&-container
+		padding 0 35px
+
+.torrents
+	fadeIn(.2s)
+	background-color #FFF
+	border 1px solid #EEE
+	border-radius 2px
+	padding 15px
+	margin-top 15px
+	width 100%
+
+.torrent
+	display flex
+	flex-direction column
+
+	&:not(:last-child)
+		margin-bottom 5px
+
+.size
+	font-size .8em
+	color #777
+
+.link
+	color #c30
 
 .movies
 	align-items center

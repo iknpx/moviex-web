@@ -6,4 +6,6 @@ export const onFetchMovieDetailsStartAction = createAction('fetch movie details 
 export const onFetchMovieDetailsSuccessAction = createAction('fetch movie details :: success');
 export const onFetchMovieRecommendationsStartAction = createAction('fetch movie recommendations :: start');
 export const onFetchMovieRecommendationsSuccessAction = createAction('fetch movie recommendations :: success');
+export const onFetchMovieTorrentsStartAction = createAction('fetch movie torrents :: start');
+export const onFetchMovieTorrentsSuccessAction = createAction('fetch movie torrents :: success');
 export const resetMovieAction = createAction('reset movie state');
