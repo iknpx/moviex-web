@@ -1,6 +1,6 @@
 {
     "DEBUG": true,
     "WS": {
-        "HOST": "http://localhost:5000"
+        "HOST": "https://moviexapis.herokuapp.com"
     }
 }

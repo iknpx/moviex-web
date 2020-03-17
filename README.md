@@ -1,5 +1,5 @@
 # Moviex
-![Build Status](https://drone.dayler.io/api/badges/iknpx/moviex-app/status.svg)
+![Build Status](https://drone.dayler.dev/api/badges/iknpx/moviex-app/status.svg)
 
 [Example](https://moviex.ml)
 
@@ -19,4 +19,4 @@
 * Run `npm start` to see the example app at http://localhost:8000
 
 ### Api
-* Make sure your API is up from [iknpx/moviex-api](https://github.com/iknpx/moviex-api)
+* Make sure your API is up [iknpx/moviex-api](https://github.com/iknpx/moviex-api)
