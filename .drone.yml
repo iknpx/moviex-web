@@ -23,18 +23,6 @@ pipeline:
         - push
         - pull_request
 
-  test:
-    image: iknpx/archnode
-    commands:
-      - yarn test
-    when:
-      branch:
-        - master
-        - feature/*
-      event:
-        - push
-        - pull_request
-
   build:
     image: iknpx/archnode
     environment:
