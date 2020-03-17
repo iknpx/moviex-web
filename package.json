@@ -81,9 +81,9 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.1.1",
     "webpack": "^4.8.2",
-    "webpack-cli": "^2.1.3",
-    "webpack-dev-middleware": "^3.1.2",
-    "webpack-hot-middleware": "^2.22.2",
-    "webpack-merge": "^4.1.2"
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-middleware": "^3.6.2",
+    "webpack-hot-middleware": "^2.24.3",
+    "webpack-merge": "^4.2.1"
   }
 }

@@ -1,8 +1,8 @@
 pipeline:
   install:
-    image: node:carbon
+    image: iknpx/archnode
     commands:
-      - npm install --quiet
+      - yarn
     when:
       branch:
         - master
@@ -12,9 +12,9 @@ pipeline:
         - pull_request
 
   lint:
-    image: node:carbon
+    image: iknpx/archnode
     commands:
-      - npm run lint
+      - yarn lint
     when:
       branch:
         - master
@@ -24,9 +24,9 @@ pipeline:
         - pull_request
 
   test:
-    image: node:carbon
+    image: iknpx/archnode
     commands:
-      - npm test
+      - yarn test
     when:
       branch:
         - master
@@ -36,7 +36,7 @@ pipeline:
         - pull_request
 
   build:
-    image: node:carbon
+    image: iknpx/archnode
     environment:
       - WS_HOST=https://moviexapis.herokuapp.com
     commands:
@@ -52,7 +52,7 @@ pipeline:
         - pull_request
 
   deploy:
-    image: node:carbon
+    image: iknpx/archnode
     secrets: [ SSH_HOST, SSH_KEY, SSH_PATH ]
     commands:
       - npm install -g gulp
