@@ -7,7 +7,7 @@
  */
 
 const gulp = require('gulp');
-const sftp = require('gulp-sftp');
+const sftp = require('gulp-sftp-up4');
 const json = require('jsonfile');
 
 const environment = 'src/core/environment.json';
