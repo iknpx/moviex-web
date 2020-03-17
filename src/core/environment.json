@@ -1,6 +1,1 @@
-{
-    "DEBUG": true,
-    "WS": {
-        "HOST": "https://moviexapis.herokuapp.com"
-    }
-}
+{"DEBUG":true,"WS":{"HOST":"https://moviexapis.herokuapp.com"}}

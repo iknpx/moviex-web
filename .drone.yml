@@ -28,8 +28,7 @@ pipeline:
     environment:
       - WS_HOST=https://moviexapis.herokuapp.com
     commands:
-      - npm install -g gulp
-      - gulp environment
+      - yarn gulp environment
       - NODE_ENV=production npm run dist
     when:
       branch:
@@ -43,8 +42,7 @@ pipeline:
     image: iknpx/archnode
     secrets: [ SSH_HOST, SSH_KEY, SSH_PATH ]
     commands:
-      - npm install -g gulp
-      - gulp deploy
+      - yarn gulp deploy
     when:
       branch:
         - master
