@@ -1,7 +1,6 @@
-# Moviex
-![Build Status](https://drone.dayler.dev/api/badges/iknpx/moviex-app/status.svg)
+## [Moviex](https://moviex.dayler.dev)
 
-[Example](https://moviex.dayler.dev)
+[![Build Status](https://drone.dayler.dev/api/badges/iknpx/moviex-web/status.svg)](https://drone.dayler.dev/iknpx/moviex-web)
 
 ### Stack
 * [Drone CI](https://drone.io)
